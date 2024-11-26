@@ -1,5 +1,6 @@
 package com.qride.users.domain.models;
 
+import com.qride.users.domain.models.enums.UserRole;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,4 +30,9 @@ public class User {
 
     @NotNull
     private Contact contact;
+
+    @NotNull
+    private UserRole role;
+
+
 }

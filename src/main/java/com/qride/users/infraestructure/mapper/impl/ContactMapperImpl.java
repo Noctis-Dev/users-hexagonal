@@ -42,6 +42,7 @@ public class ContactMapperImpl implements IContactMapper {
         contactEntity.setPhoneNumber(model.getPhoneNumber());
         contactEntity.setEmail(model.getEmail());
         contactEntity.setCreatedAt(model.getCreatedAt());
+        contactEntity.setName(model.getName());
 
         if (model.getUser() == null) {
             return contactEntity;

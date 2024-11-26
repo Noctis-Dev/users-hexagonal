@@ -5,5 +5,6 @@ import com.qride.users.domain.events.EventType;
 public record ContactRequest(
     EventType type,
     String phoneNumber,
-    String email
+    String email,
+    String name
 ) { }

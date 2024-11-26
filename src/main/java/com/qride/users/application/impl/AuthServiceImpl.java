@@ -1,6 +1,8 @@
 package com.qride.users.application.impl;
 
 import com.qride.users.application.*;
+import com.qride.users.application.dto.request.LogInRequest;
+import com.qride.users.application.dto.response.LogInResponse;
 import com.qride.users.domain.broker.IMessageProducer;
 import com.qride.users.domain.models.Contact;
 import com.qride.users.domain.models.Credential;
@@ -46,8 +48,8 @@ public class AuthServiceImpl implements IAuthService {
         ThreadsUtil.runTask(() -> {
             EventFactory factory = EventFactory.builder()
                     .type(request.type())
-                    .subject("Verification code SCI-ALL")
-                    .message("you SCI-ALL Verification Code: " + savedToken.getToken())
+                    .subject("Verification code QRide")
+                    .message("Codigo de verificacion: " + savedToken.getToken())
                     .email(contact.getEmail())
                     .phoneNumber(contact.getPhoneNumber())
                     .producer(messageProducer).build();
@@ -66,6 +68,31 @@ public class AuthServiceImpl implements IAuthService {
         return BaseResponse.builder()
                 .data(response)
                 .message("The user account was created successfully")
+                .success(Boolean.TRUE)
+                .httpStatus(HttpStatus.OK)
+                .status(200).build();
+    }
+
+    @Override
+    public  BaseResponse logIn(LogInRequest request) {
+        Credential credential;
+        if (request.phoneNumber() == null || request.phoneNumber().isEmpty()) {
+            credential = credentialService.find(request.email());
+        } else {
+            credential = credentialService.find(request.phoneNumber());
+        }
+        Contact contact = credential.getContact();
+
+        if (!credential.getPassword().equals(request.password())) {
+            throw new RuntimeException();
+        }
+
+        LogInResponse response = new LogInResponse();
+        response.setUser(contact.getName());
+
+        return BaseResponse.builder()
+                .data(response)
+                .message("User logged in successfully")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)
                 .status(200).build();

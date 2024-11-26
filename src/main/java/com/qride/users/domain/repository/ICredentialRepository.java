@@ -10,5 +10,6 @@ public interface ICredentialRepository {
     Credential create(@Valid Credential credentialEntity);
     Credential find(UUID credentialUuid);
     Credential find(String phoneNumber);
+    Credential findByEmail(String email);
 
 }

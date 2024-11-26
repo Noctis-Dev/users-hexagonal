@@ -34,11 +34,16 @@ public class ContactEntity {
     @Column(name = "email", length = 55)
     private String email;
 
+    @Column(name = "name", length = 55)
+    private String name;
+
     @NotNull
     @Column(name = "created_at", nullable = false)
     private LocalDate createdAt;
 
     @OneToOne(mappedBy = "contactEntity")
     private UserEntity userEntity;
+
+
 
 }

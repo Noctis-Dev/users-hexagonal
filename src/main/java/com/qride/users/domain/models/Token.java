@@ -20,7 +20,4 @@ public class Token {
 
     @NotNull
     private LocalDate expirationDate;
-
-    @NotNull
-    private TokenSetting tokenSetting;
 }

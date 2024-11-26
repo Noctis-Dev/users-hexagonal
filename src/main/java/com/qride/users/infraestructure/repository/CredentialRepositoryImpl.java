@@ -36,4 +36,10 @@ public class CredentialRepositoryImpl implements ICredentialRepository {
         return jpaRepository.find(phoneNumber)
                 .map(mapper::toDomain).orElseThrow(EntityNotFoundException::new);
     }
+
+    @Override
+    public  Credential findByEmail(String email) {
+        return jpaRepository.findByEmail(email)
+                .map(mapper::toDomain).orElseThrow(EntityNotFoundException::new);
+    }
 }

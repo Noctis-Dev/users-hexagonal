@@ -11,13 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     @Bean
-    public Queue notificationEmailQueue() {
-        return new Queue("EmailNotification", true);
-    }
-
-    @Bean
-    public Queue notificationWhatsappQueue() {
-        return new Queue("WhatsappNotification", true);
+    public Queue notificationEventQueue() {
+        return new Queue("NotificationEvent", true);
     }
 
     @Bean

@@ -17,6 +17,9 @@ public class Contact {
     @org.hibernate.validator.constraints.UUID
     private UUID contactUuid;
 
+    @NotNull
+    private String name;
+
     @Size(max = 15)
     private String phoneNumber;
 

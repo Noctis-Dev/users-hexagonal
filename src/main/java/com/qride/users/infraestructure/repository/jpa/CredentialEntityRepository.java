@@ -16,4 +16,9 @@ public interface CredentialEntityRepository extends JpaRepository<CredentialEnti
     """, nativeQuery = true)
     Optional<CredentialEntity> find(String phoneNumber);
 
+    @Query(value = """
+        SELECT c.* FROM credentials c INNER JOIN contacts co WHERE co.email = :email
+    """, nativeQuery = true)
+    Optional<CredentialEntity> findByEmail(String email);
+
 }

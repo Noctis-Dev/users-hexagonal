@@ -12,5 +12,5 @@ public interface ICredentialService {
     Credential create(CredentialRequest request, Token token, Contact contact);
     Credential find(UUID credentialUuid);
     Credential find(String phoneNumber);
-
+    Credential findByEmail(String email);
 }

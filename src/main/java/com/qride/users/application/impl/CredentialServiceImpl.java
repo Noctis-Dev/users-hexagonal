@@ -41,6 +41,11 @@ public class CredentialServiceImpl implements ICredentialService {
         return repository.find(phoneNumber);
     }
 
+    @Override
+    public Credential findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
     private Credential toCredential(CredentialRequest request) {
         Credential credential = new Credential();
 

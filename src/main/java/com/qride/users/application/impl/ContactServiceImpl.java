@@ -60,6 +60,7 @@ public class ContactServiceImpl implements IContactService {
         contact.setPhoneNumber(request.phoneNumber());
         contact.setEmail(request.email());
         contact.setCreatedAt(LocalDate.now());
+        contact.setName(request.name());
 
         return contact;
     }
