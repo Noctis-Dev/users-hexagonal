@@ -3,6 +3,7 @@ package com.qride.users.application.impl;
 import com.qride.users.application.IUserService;
 import com.qride.users.domain.models.Contact;
 import com.qride.users.domain.models.User;
+import com.qride.users.domain.models.enums.UserRole;
 import com.qride.users.domain.models.enums.UserStatus;
 import com.qride.users.domain.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class UserServiceImpl implements IUserService {
         user.setCreatedAt(LocalDate.now());
         user.setStatus(UserStatus.INACTIVE);
         user.setContact(contact);
+        user.setRole(UserRole.USER);
 
         return repository.create(user);
     }
