@@ -32,7 +32,7 @@ public class ContactServiceImpl implements IContactService {
         ThreadsUtil.runTask(() -> {
             EventFactory factory = EventFactory.builder()
                     .type(contact.type())
-                    .subject("Welcome to SCI-ALL!")
+                    .subject("Welcome to QRide!")
                     .message("This is a welcome message we are exited for your arrive")
                     .email(savedContact.getEmail())
                     .phoneNumber(savedContact.getPhoneNumber())

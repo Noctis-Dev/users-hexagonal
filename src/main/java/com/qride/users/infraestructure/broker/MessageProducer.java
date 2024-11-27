@@ -14,6 +14,6 @@ public class MessageProducer implements IMessageProducer {
 
     @Override
     public void sendNotification(NotificationEvent event) {
-        rabbitTemplate.convertAndSend("Notification", event);
+        rabbitTemplate.convertAndSend("NotificationEvent", event);
     }
 }
