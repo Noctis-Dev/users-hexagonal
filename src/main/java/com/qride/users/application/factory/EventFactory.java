@@ -22,9 +22,16 @@ public class EventFactory {
     public Notification getNotification() {
         NotificationEvent event = new NotificationEvent();
         event.setType(type);
-        event.setDestination(email);
         event.setSubject(subject);
         event.setMessage(message);
+
+        if (type == EventType.EMAIL) {
+            event.setDestination(email);
+        } else if (type == EventType.WHATSAPP) {
+            event.setDestination(phoneNumber);
+        } else {
+            throw new IllegalArgumentException("Unsupported event type: " + type);
+        }
 
         return () -> producer.sendNotification(event);
     }
