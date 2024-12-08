@@ -43,7 +43,4 @@ public class ContactEntity {
 
     @OneToOne(mappedBy = "contactEntity")
     private UserEntity userEntity;
-
-
-
 }
